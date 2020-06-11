@@ -31,10 +31,12 @@ Instagram에 업데이트되는 사진들을 저장하기 위해서는 원본 �
 
 
 1. python2 -> python3
+
 코드는 python3를 기준으로 작성됐기 때문에, Raspberry pi에서 실행하기 위해서는 python을 python2가 아닌 python3로 upgrade해야 한다.
 
 
-2. urllib 라이브러
+2. urllib 라이브러리
+
  pip install urllib를 통해 설치 가능
 
 
