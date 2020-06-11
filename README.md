@@ -49,7 +49,7 @@ Option. Local printer & CUPS : 사진을 저장한 후, 인쇄하기 위해서�
 
 	python print.py https://www.instagram.com/p/B\_RsWY3HZWP/ SeojoonPark
    
-<img src= "https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/93810746\_1175396686131524\_1870466887554263304\_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=0J\_fE\_cbqYUAX\_WMHf9&oh=e0fe2ccb7abb8db1d0f1f16f8ce13a44&oe=5F0CD41B">
+<img src= "https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/93810746_1175396686131524_1870466887554263304_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=0J_fE_cbqYUAX_WMHf9&oh=e0fe2ccb7abb8db1d0f1f16f8ce13a44&oe=5F0CD41B">
 
 
 
