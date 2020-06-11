@@ -2,98 +2,41 @@
 
 import sys
 import os
-import urllib
+import urllib.parse
+import urllib.request
 import subprocess
-import bluetooth
 
-TEMP_FILE_NAME = 'temporaryImage.jpg'
+def downloadPhotoFromLink(link, fileName):
 
-def downloadPhotoFromLink(link):
-	
-	paramaters = urllib.urlencode({'link': link})
-	photo = urllib.urlopen("http://instagram.jonathanlking.com/link?%s" % paramaters)
-	return photo
+    insta_url = link
+    photo_url = insta_url+"media/?size=l"
+    urllib.request.urlretrieve(photo_url, fileName)
+    print("A photo from Instgram URL is saved.")
 
-def savePhotoWithName(photo, name):
-	
-	try:
-		with open(name,'w') as file:
-			file.write(photo.read())
-	except IOError:
-		print "Unable to write file"
-		sys.exit()
-	else:
-		print "Image saved locally"
+def sendPhotoToPrintWithFilename(fileName):
 
-def readPrinterAddress():
-	
-	try:
-		with open('settings.txt','r') as settings:
-			printerAddress = file.readline(settings).rstrip()
-			return printerAddress
-	except IOError:
-		print "Unable to read printer address, do you have a settings.txt file?"
-		sys.exit()
-	
+    print_or_not = input("Do you want to print it out? (Y/N) :")
 
-def printerAvailable(printerAddress):
-	
-	# Scan for nearby bluetooth devices
-	nearbyDevices = bluetooth.discover_devices()
-	
-	if printerAddress in str(nearbyDevices):
-		return True
-	else:
-		return False
+    if print_or_not == ('Y' or 'y' or 'yes' or 'Yes' or 'YES'):
+        subprocess.call(["lp", fileName])
 
-def sendPhotoToPrintWithFilename(filename):
-	
-	sendPhoto = subprocess.Popen('ussp-push /dev/rfcomm0 temporaryImage.jpg file.jpg', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	output = sendPhoto.stdout.read()
-	errors = sendPhoto.stderr.read()
-	
-	if 'connection established' in output.lower() and 'error' not in errors.lower():
-		return True
-	else:
-		print 'There was an error:', '\033[91m', errors
-		return False
+    else:
+        print("Program is Ended.")
 
-# Get the printer address from 'settings.txt'
+if len(sys.argv) != 3:
+    print("Enter your input value: [print.py] [Instagram URL] [File Name]")
+    sys.exit()
 
-printerAddress = readPrinterAddress()
-
-# Get the image link
-
-imageLink = ''
-
-if len(sys.argv) > 1:
-	imageLink = sys.argv[1]
 else:
-	print 'No link provided'
-	sys.exit()
+    imageLink = sys.argv[1]
+    fileName = sys.argv[2] + '.jpeg'
 
-# Download the image to print from the link
+    if not os.path.exists(fileName):
+        downloadPhotoFromLink(imageLink, fileName)
+        sendPhotoToPrintWithFilename(fileName) 
 
-photo = downloadPhotoFromLink(imageLink)
+    else:
+        print(fileName, " is already existed.")
+        sendPhotoToPrintWithFilename(fileName)        
+        sys.exit()
 
-# Save the image to file
-
-savePhotoWithName(photo, TEMP_FILE_NAME)
-
-# Bind the printer to rfcomm0
-
-subprocess.check_output(['sudo', 'rfcomm', 'bind', '/dev/rfcomm0', printerAddress], stderr=subprocess.STDOUT)
-
-# Check that the printer is available
-
-if not printerAvailable(printerAddress):
-	print "No printer"
-	sys.exit()
-
-# Check that the image is real
-# - Don't need to worry about this, the printer already handles this
-
-# Send to photo to be printed
-
-if sendPhotoToPrintWithFilename(TEMP_FILE_NAME):
-	print "Sent to printer"
