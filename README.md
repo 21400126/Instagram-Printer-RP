@@ -1,4 +1,4 @@
-Instagram-Printer-RP 목적 & 장점
+Instagram-Printer-RP 목적
 ==============================
 
 기존 코드는 Raspberry Pi와 Polaroid Pogo라는 휴대용 블루투스 프린터를 위해 작성됐었다.
