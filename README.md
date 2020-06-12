@@ -64,6 +64,10 @@ Rasberrypi 파이썬3이상 업그레이드: <https://godpeople.or.kr/board/3409
 
 Raspberrypi로 네트워크 프린터 만들기: <https://blog.naver.com/PostView.nhn?blogId=renucs&logNo=221337532824&from=search&redirect=Log&widgetTypeCall=true&directAccess=false>
 
+발표 영상
+-----------------
+<https://drive.google.com/file/d/1_nj41ffVTFfNMs9xyjyvtbSvwSD7CD6b/view?usp=sharing>
+
 License
 -------
 
