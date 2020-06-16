@@ -32,7 +32,7 @@ Instagram에 업데이트되는 사진들을 저장하기 위해서는 원본 �
 
 1. python2 -> python3
 
-코드는 python3를 기준으로 작성됐기 때문에, Raspberry pi에서 실행하기 위해서는 python을 python2가 아닌 python3로 upgrade해야 한다.
+코드는 python3를 기준으로 작성됐기 때문에, Raspberry pi에서 실행하기 위해서는 python을 python2가 아닌 python3로 upgrade해야 한다. 
 
 
 2. urllib 라이브러리
@@ -63,6 +63,19 @@ Rasberrypi 파이썬3이상 업그레이드: <https://godpeople.or.kr/board/3409
 
 
 Raspberrypi로 네트워크 프린터 만들기: <https://blog.naver.com/PostView.nhn?blogId=renucs&logNo=221337532824&from=search&redirect=Log&widgetTypeCall=true&directAccess=false>
+
+
+기존 코드 & 차이점
+-----------------------
+Open Source: <https://github.com/jonathanlking/Instagram-Printer-RP>
+
+기존 코드에서의 변경 사항은 아래와 같다.
+
+1. Python 2 code에서 Python 3 code로의 변경
+
+2. Bluetooth printer를 위한 code에서 Default(Local/Network) Printer를 위한 code로의 변경
+
+3. 사진 저장 & 인쇄 기능을 사용자의 기호에 맞게 필요한 기능만 선택할 수 있도록 변경
 
 발표 영상
 -----------------
